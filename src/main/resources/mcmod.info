@@ -1,0 +1,16 @@
+[
+{
+  "modid": "nvoid",
+  "name": "nVoid",
+  "description": "Generates the nether as a void.",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["Vashmeed"],
+  "credits": "Ferdz",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
