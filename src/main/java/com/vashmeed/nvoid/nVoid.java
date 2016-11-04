@@ -1,8 +1,10 @@
 package com.vashmeed.nvoid;
 
 import com.vashmeed.nvoid.proxy.CommonProxy;
-import com.vashmeed.nvoid.world.World;
+import com.vashmeed.nvoid.world.WorldProviderVoidNether;
 
+import net.minecraft.world.DimensionType;
+import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -27,16 +29,19 @@ public class nVoid {
 
 	@Mod.EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
-		System.out.println(name + " is loading!");
+		event.getModLog().info(name + " is loading!");
 	}
 
 	@Mod.EventHandler
 	public void load(FMLInitializationEvent event) {
-		World.registerWorldProviders();
+		DimensionManager.unregisterDimension(-1);
+		DimensionManager.registerDimension(-1,
+				DimensionType.register("VoidNether", "_nether", -1, WorldProviderVoidNether.class, true));
 	}
 
 	@Mod.EventHandler
 	public void init(FMLInitializationEvent event) {
+
 	}
 
 	@Mod.EventHandler

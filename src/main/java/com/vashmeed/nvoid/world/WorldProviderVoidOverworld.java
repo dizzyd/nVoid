@@ -1,4 +1,4 @@
-package com.vashmeed.nvoid.world.gen;
+package com.vashmeed.nvoid.world;
 
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.WorldProviderSurface;

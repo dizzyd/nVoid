@@ -1,4 +1,4 @@
-package com.vashmeed.nvoid.world.gen;
+package com.vashmeed.nvoid.world;
 
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.util.math.BlockPos;

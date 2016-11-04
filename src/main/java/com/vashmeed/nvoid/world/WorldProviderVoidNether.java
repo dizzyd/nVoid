@@ -1,4 +1,4 @@
-package com.vashmeed.nvoid.world.gen;
+package com.vashmeed.nvoid.world;
 
 import com.vashmeed.nvoid.config.Settings;
 

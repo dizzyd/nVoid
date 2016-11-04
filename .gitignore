@@ -14,8 +14,20 @@ local.properties
 .loadpath
 .recommenders
 
-# Eclipse Core
+# Workspace
 .project
+.classpath
+gradlew
+gradlew.bat
+.gradle/
+.settings/
+bin/
+build/
+eclipse/
+gradle/
+run/
+forge_Client.launch
+forge_Server.launch
 
 # External tool builders
 .externalToolBuilders/
