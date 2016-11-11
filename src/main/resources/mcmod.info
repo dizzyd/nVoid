@@ -5,7 +5,7 @@
   "description": "Generates the nether as a void.",
   "version": "${version}",
   "mcversion": "${mcversion}",
-  "url": "",
+  "url": "https://minecraft.curseforge.com/projects/nvoid",
   "updateUrl": "",
   "authorList": ["Vashmeed"],
   "credits": "Ferdz for the awesome mod advice and support.",
