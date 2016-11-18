@@ -6,7 +6,10 @@ import com.vashmeed.nvoid.world.WorldProviderVoidNether;
 import com.vashmeed.nvoid.world.WorldProviderVoidOverworld;
 import com.vashmeed.nvoid.world.WorldTypeVoid;
 
+import net.minecraft.init.Blocks;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.DimensionType;
+import net.minecraft.world.World;
 import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
@@ -25,7 +28,6 @@ public class nVoid {
 	public static final String name = "nVoid";
 	public static final String version = "0.2";
 
-	public static boolean voidNether;
 	private WorldProviderVoidOverworld world;
 
 	@SidedProxy(serverSide = "com.vashmeed.nvoid.proxy.CommonProxy", clientSide = "com.vashmeed.nvoid.proxy.ClientProxy")
@@ -41,7 +43,7 @@ public class nVoid {
 		Config.loadConfig(event);
 		MinecraftForge.EVENT_BUS.register(this);
 	}
-
+	
 	@Mod.EventHandler
 	public void load(FMLInitializationEvent event) {
 		wtv = new WorldTypeVoid();
@@ -54,6 +56,7 @@ public class nVoid {
 			DimensionManager.unregisterDimension(0);
 			DimensionManager.registerDimension(0,
 					DimensionType.register("VoidOverworld", "overworld", 0, WorldProviderVoidOverworld.class, true));
+			
 		}
 	}
 
