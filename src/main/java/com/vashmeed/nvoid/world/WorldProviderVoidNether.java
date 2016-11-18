@@ -19,6 +19,6 @@ public class WorldProviderVoidNether extends WorldProviderHell {
 
 	@Override
 	public void createBiomeProvider() {
-		this.biomeProvider = new BiomeProviderSingle(Biomes.HELL);
+		this.biomeProvider = new BiomeProviderSingle(Biomes.VOID);
 	}
 }
