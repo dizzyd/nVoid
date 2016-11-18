@@ -5,7 +5,9 @@ import com.vashmeed.nvoid.world.biome.BiomeProviderVoidOverworld;
 import com.vashmeed.nvoid.world.gen.ChunkGenerator;
 
 import net.minecraft.init.Biomes;
+import net.minecraft.init.Blocks;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 import net.minecraft.world.WorldProviderSurface;
 import net.minecraft.world.biome.BiomeProviderSingle;
 import net.minecraft.world.chunk.IChunkGenerator;
@@ -15,6 +17,8 @@ import net.minecraft.world.chunk.IChunkGenerator;
  */
 public class WorldProviderVoidOverworld extends WorldProviderSurface {
 
+	World w;
+	
 	@Override
 	public boolean canCoordinateBeSpawn(int x, int z) {
 		return true;
@@ -27,10 +31,12 @@ public class WorldProviderVoidOverworld extends WorldProviderSurface {
 
 	@Override
 	protected void createBiomeProvider() {
+			//getSpawnBlock();
 			this.biomeProvider = new BiomeProviderSingle(Biomes.VOID);
-			this.biomeProvider = new BiomeProviderVoidOverworld(worldObj);
+			//this.biomeProvider = new BiomeProviderVoidOverworld(worldObj);
+			//getSpawnBlock();
 	}
-
+	
 	@Override
 	public BlockPos getRandomizedSpawnPoint() {
 		BlockPos spawn = new BlockPos(worldObj.getSpawnPoint());

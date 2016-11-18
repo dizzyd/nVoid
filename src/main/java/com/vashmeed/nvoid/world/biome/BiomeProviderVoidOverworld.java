@@ -23,7 +23,7 @@ public class BiomeProviderVoidOverworld extends BiomeProvider {
 		super(w.getWorldInfo());
 		this.w = w;
 	}
-
+	
 	@Override
 	public BlockPos findBiomePosition(int x, int z, int range, List<Biome> biomes, Random rand) {
 		BlockPos pos = new BlockPos(x, Config.overworldSpawnHeight, z);
