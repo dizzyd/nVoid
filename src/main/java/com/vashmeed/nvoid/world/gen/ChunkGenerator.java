@@ -23,11 +23,11 @@ public class ChunkGenerator extends ChunkProviderFlat {
 	@Override
 	public Chunk provideChunk(int x, int z) {
 		Chunk c = new Chunk(w, new ChunkPrimer(), x, z);
-		Biome[] biome = w.getBiomeProvider().getBiomesForGeneration(null, x * 16, z * 16, 16, 16);
+		Biome[] abiome = this.w.getBiomeProvider().loadBlockGeneratorData((Biome[]) null, x * 16, z * 16, 16, 16);
 		byte[] ids = c.getBiomeArray();
 
-		for (int i = 0; i < ids.length; i++) {
-			ids[i] = (byte) Biome.getIdForBiome(biome[i]);
+		for (int i = 0; i < ids.length; ++i) {
+			ids[i] = (byte) Biome.getIdForBiome(abiome[i]);
 		}
 
 		c.generateSkylightMap();

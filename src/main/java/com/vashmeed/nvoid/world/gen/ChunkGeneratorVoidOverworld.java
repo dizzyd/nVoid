@@ -2,10 +2,9 @@ package com.vashmeed.nvoid.world.gen;
 
 import java.util.List;
 
-import com.vashmeed.nvoid.config.Config;
-
 import net.minecraft.entity.EnumCreatureType;
-import net.minecraft.init.Blocks;
+import net.minecraft.entity.passive.EntitySheep;
+import net.minecraft.init.Biomes;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
@@ -20,24 +19,18 @@ public class ChunkGeneratorVoidOverworld extends ChunkProviderOverworld {
 	}
 
 	public List<Biome.SpawnListEntry> getPossibleCreatures(EnumCreatureType creatureType, BlockPos pos) {
-		Biome biome = world.getBiomeGenForCoords(pos);
+		Biome biome = Biomes.HELL;
 		return biome.getSpawnableList(creatureType);
 	}
 
 	@Override
 	public BlockPos getStrongholdGen(World worldIn, String structureName, BlockPos position) {
-		getSpawnBlock();
 		return null;
 	}
 
-	public void getSpawnBlock() {
-		BlockPos pos = new BlockPos(world.getSpawnPoint().getX(), Config.overworldSpawnHeight, world.getSpawnPoint().getZ());
-		world.setBlockState(pos, Blocks.DIRT.getDefaultState());
-		System.out.println(pos);
-	}
-	
 	@Override
 	public void populate(int x, int z) {
-		//getSpawnBlock();
+
 	}
+
 }

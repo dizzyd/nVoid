@@ -2,10 +2,8 @@ package com.vashmeed.nvoid.world.gen;
 
 import java.util.List;
 
-import com.vashmeed.nvoid.config.Config;
-
 import net.minecraft.entity.EnumCreatureType;
-import net.minecraft.init.Blocks;
+import net.minecraft.init.Biomes;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
@@ -35,13 +33,13 @@ public class ChunkGeneratorVoidNether extends ChunkProviderHell {
 	}
 
 	public List<Biome.SpawnListEntry> getPossibleCreatures(EnumCreatureType creatureType, BlockPos pos) {
-		Biome biome = world.getBiomeGenForCoords(pos);
+		Biome biome = Biomes.HELL;
 		return biome.getSpawnableList(creatureType);
 	}
-	
+
 	@Override
 	public void populate(int x, int z) {
-		
+
 	}
 
 }

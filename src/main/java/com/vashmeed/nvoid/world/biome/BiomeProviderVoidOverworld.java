@@ -3,8 +3,6 @@ package com.vashmeed.nvoid.world.biome;
 import java.util.List;
 import java.util.Random;
 
-import com.vashmeed.nvoid.config.Config;
-
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.math.BlockPos;
@@ -23,10 +21,10 @@ public class BiomeProviderVoidOverworld extends BiomeProvider {
 		super(w.getWorldInfo());
 		this.w = w;
 	}
-	
+
 	@Override
 	public BlockPos findBiomePosition(int x, int z, int range, List<Biome> biomes, Random rand) {
-		BlockPos pos = new BlockPos(x, Config.overworldSpawnHeight, z);
+		BlockPos pos = new BlockPos(x, 76, z);
 		if (x == 0 && z == 0 && !w.getWorldInfo().isInitialized()) {
 			w.setBlockState(pos, Blocks.DIRT.getDefaultState());
 		}
