@@ -24,7 +24,7 @@ public class nVoid {
 
 	public static final String modId = "nvoid";
 	public static final String name = "nVoid";
-	public static final String version = "0.2";
+	public static final String version = "0.3";
 
 	public static boolean voidNether;
 	private WorldProviderVoidOverworld world;

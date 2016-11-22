@@ -1,5 +1,7 @@
 package com.vashmeed.nvoid.world.gen;
 
+import com.vashmeed.nvoid.world.biome.ModBiomes;
+
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.chunk.Chunk;
@@ -12,6 +14,9 @@ public class ChunkGenerator extends ChunkProviderFlat {
 
 	public ChunkGenerator(World w) {
 		super(w, w.getSeed(), false, null);
+		//this.w.getBiomeProvider().equals(ModBiomes.N_VOID);
+		this.w.getBiomeProvider().getBiomesToSpawnIn().clear();
+		this.w.getBiomeProvider().getBiomesToSpawnIn().add(ModBiomes.N_VOID);
 		this.w = w;
 	}
 
