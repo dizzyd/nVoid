@@ -1,10 +1,10 @@
 package com.vashmeed.nvoid.world;
 
-import com.vashmeed.nvoid.world.gen.ChunkGenerator;
+import com.vashmeed.nvoid.world.biome.VoidBiomeProvider;
+import com.vashmeed.nvoid.world.gen.ChunkGeneratorVoidOverworld;
 
-import net.minecraft.init.Biomes;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.WorldProviderHell;
-import net.minecraft.world.biome.BiomeProviderSingle;
 import net.minecraft.world.chunk.IChunkGenerator;
 
 /**
@@ -13,12 +13,24 @@ import net.minecraft.world.chunk.IChunkGenerator;
 public class WorldProviderVoidNether extends WorldProviderHell {
 
 	@Override
+	public boolean canCoordinateBeSpawn(int x, int z) {
+		return true;
+	}
+
+	@Override
 	public IChunkGenerator createChunkGenerator() {
-		return new ChunkGenerator(worldObj);
+		return new ChunkGeneratorVoidOverworld(worldObj);
 	}
 
 	@Override
 	public void createBiomeProvider() {
-		this.biomeProvider = new BiomeProviderSingle(Biomes.VOID);
+			this.biomeProvider = new VoidBiomeProvider(worldObj);
+	}
+
+	@Override
+	public BlockPos getRandomizedSpawnPoint() {
+		BlockPos spawn = new BlockPos(worldObj.getSpawnPoint());
+		spawn = worldObj.getTopSolidOrLiquidBlock(spawn);
+		return spawn;
 	}
 }

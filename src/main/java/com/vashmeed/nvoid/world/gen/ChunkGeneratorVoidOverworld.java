@@ -1,54 +1,52 @@
 package com.vashmeed.nvoid.world.gen;
 
-import java.util.List;
+import com.vashmeed.nvoid.config.Config;
 
-import net.minecraft.entity.EnumCreatureType;
-import net.minecraft.entity.passive.EntitySheep;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Biomes;
+import net.minecraft.init.Blocks;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
-import net.minecraft.world.gen.ChunkProviderOverworld;
-import net.minecraft.world.gen.MapGenBase;
-import net.minecraft.world.gen.MapGenCaves;
-import net.minecraft.world.gen.MapGenRavine;
-import net.minecraft.world.gen.structure.MapGenMineshaft;
-import net.minecraft.world.gen.structure.MapGenScatteredFeature;
-import net.minecraft.world.gen.structure.MapGenStronghold;
-import net.minecraft.world.gen.structure.MapGenVillage;
-import net.minecraft.world.gen.structure.StructureOceanMonument;
-import net.minecraftforge.fml.common.FMLLog;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraft.world.chunk.Chunk;
+import net.minecraft.world.chunk.ChunkPrimer;
+import net.minecraft.world.gen.ChunkProviderFlat;
+import net.minecraftforge.common.DimensionManager;
 
-public class ChunkGeneratorVoidOverworld extends ChunkProviderOverworld {
+public class ChunkGeneratorVoidOverworld extends ChunkProviderFlat {
 
-	World world;
+	private World w;
 
-	public ChunkGeneratorVoidOverworld(World worldIn, long seed, boolean mapFeaturesEnabledIn, String p_i46668_5_) {
-		super(worldIn, seed, false, p_i46668_5_);
+	public ChunkGeneratorVoidOverworld(World w) {
+		super(w, w.getSeed(), false, null);
+		this.w = w;
 	}
 
 	@Override
-	public BlockPos getStrongholdGen(World worldIn, String structureName, BlockPos position) {
-		return null;
-	}
-	
-	@Override
-    public List<Biome.SpawnListEntry> getPossibleCreatures(EnumCreatureType creatureType, BlockPos pos)
-    {
-        Biome biome = this.world.getBiomeGenForCoords(pos);
-        return biome.getSpawnableList(creatureType);
-    }
-	
-	@Override
-	public void populate(int x, int z) {
-		System.out.println("!!!!!!");
+	public void populate(int x, int y) {
+		if (x == 0 && y == 0)
+			this.w.setBlockState(new BlockPos(0, Config.overworldSpawnHeight, 0), Blocks.DIRT.getDefaultState());
+		/*System.out.println("!!!!!!");
 		System.out.println("!!!!!!");
 		System.out.println("");
 		System.out.println("This ran.");
 		System.out.println("");
 		System.out.println("!!!!!!");
-		System.out.println("!!!!!!");
+		System.out.println("!!!!!!");*/
+	}
+
+	@Override
+	public Chunk provideChunk(int x, int z) {
+		Chunk c = new Chunk(w, new ChunkPrimer(), x, z);
+		Biome[] abiome = this.w.getBiomeProvider().loadBlockGeneratorData((Biome[]) null, x * 16, z * 16, 16, 16);
+		byte[] ids = c.getBiomeArray();
+
+		for (int i = 0; i < ids.length; ++i) {
+			ids[i] = (byte) Biome.getIdForBiome(Biomes.VOID);
+		}
+
+		c.generateSkylightMap();
+		return c;
 	}
 
 }

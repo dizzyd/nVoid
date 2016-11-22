@@ -4,7 +4,8 @@ import com.vashmeed.nvoid.config.Config;
 import com.vashmeed.nvoid.proxy.CommonProxy;
 import com.vashmeed.nvoid.world.WorldProviderVoidNether;
 import com.vashmeed.nvoid.world.WorldProviderVoidOverworld;
-import com.vashmeed.nvoid.world.WorldTypeVoid;
+import com.vashmeed.nvoid.world.WorldTypeVoidNether;
+import com.vashmeed.nvoid.world.WorldTypeVoidOverworld;
 
 import net.minecraft.world.DimensionType;
 import net.minecraft.world.biome.Biome;
@@ -26,15 +27,13 @@ public class nVoid {
 	public static final String name = "nVoid";
 	public static final String version = "0.3";
 
-	public static boolean voidNether;
-	private WorldProviderVoidOverworld world;
-
 	@SidedProxy(serverSide = "com.vashmeed.nvoid.proxy.CommonProxy", clientSide = "com.vashmeed.nvoid.proxy.ClientProxy")
 	public static CommonProxy proxy;
 
 	@Mod.Instance(modId)
 	public static nVoid instance;
-	private WorldTypeVoid wtv;
+	private WorldTypeVoidOverworld wtvo;
+	private WorldTypeVoidNether wtvn;
 	private Biome wb;
 
 	@Mod.EventHandler
@@ -46,16 +45,17 @@ public class nVoid {
 
 	@Mod.EventHandler
 	public void load(FMLInitializationEvent event) {
-		wtv = new WorldTypeVoid();
 		if (Config.voidNether == true) {
+			wtvo = new WorldTypeVoidOverworld();
 			DimensionManager.unregisterDimension(-1);
 			DimensionManager.registerDimension(-1,
 					DimensionType.register("VoidNether", "_nether", -1, WorldProviderVoidNether.class, false));
 		}
 		if (Config.voidOverworld == true) {
+			wtvn = new WorldTypeVoidNether();
 			DimensionManager.unregisterDimension(0);
 			DimensionManager.registerDimension(0,
-					DimensionType.register("VoidOverworld", "overworld", 0, WorldProviderVoidOverworld.class, true));
+					DimensionType.register("VoidOverworld", "overworld", 0, WorldProviderVoidOverworld.class, false));
 		}
 	}
 

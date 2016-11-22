@@ -1,14 +1,10 @@
 package com.vashmeed.nvoid.world;
 
-import com.vashmeed.nvoid.config.Config;
-import com.vashmeed.nvoid.world.biome.BiomeProviderVoidOverworld;
-import com.vashmeed.nvoid.world.biome.ModBiomes;
-import com.vashmeed.nvoid.world.gen.ChunkGenerator;
+import com.vashmeed.nvoid.world.biome.VoidBiomeProvider;
+import com.vashmeed.nvoid.world.gen.ChunkGeneratorVoidOverworld;
 
-import net.minecraft.init.Biomes;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.WorldProviderSurface;
-import net.minecraft.world.biome.BiomeProviderSingle;
 import net.minecraft.world.chunk.IChunkGenerator;
 
 /**
@@ -23,16 +19,12 @@ public class WorldProviderVoidOverworld extends WorldProviderSurface {
 
 	@Override
 	public IChunkGenerator createChunkGenerator() {
-		return new ChunkGenerator(worldObj);
+		return new ChunkGeneratorVoidOverworld(worldObj);
 	}
 
 	@Override
 	protected void createBiomeProvider() {
-		if (Config.voidBiomeOverworld)
-			// this.biomeProvider = new BiomeProviderSingle(Biomes.VOID);
-			this.biomeProvider = new BiomeProviderSingle(ModBiomes.N_VOID);
-		else
-			this.biomeProvider = new BiomeProviderVoidOverworld(worldObj);
+			this.biomeProvider = new VoidBiomeProvider(worldObj);
 	}
 
 	@Override
