@@ -24,7 +24,7 @@ public class WorldProviderVoidOverworld extends WorldProviderSurface {
 
 	@Override
 	protected void createBiomeProvider() {
-			this.biomeProvider = new VoidBiomeProvider(worldObj);
+		this.biomeProvider = new VoidBiomeProvider(worldObj);
 	}
 
 	@Override

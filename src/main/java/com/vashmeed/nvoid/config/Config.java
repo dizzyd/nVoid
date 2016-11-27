@@ -1,6 +1,5 @@
 package com.vashmeed.nvoid.config;
 
-import net.minecraft.block.state.IBlockState;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
@@ -28,8 +27,9 @@ public class Config {
 				"If enabled, the default 'hell' biome will be replaced by a void biome, resulting in no mobs spawning and other biome specific features.");
 		voidBiomeOverworld = config.getBoolean("Generate the overworld as a void biome", "beta", false,
 				"If enabled, natural biome generation options will be replaced by the void, preventing mobs from spawning and other biome specific features.");
-		
-		overworldSpawnHeight = config.getInt("Spawn Height", "alpha", 64, 0, 254, "Changes the height at which you spawn at.");
+
+		overworldSpawnHeight = config.getInt("Spawn Height", "gamma", 64, 0, 254,
+				"Changes the height at which you spawn at.");
 
 	}
 

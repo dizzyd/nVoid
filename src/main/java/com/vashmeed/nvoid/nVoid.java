@@ -49,13 +49,13 @@ public class nVoid {
 			wtvo = new WorldTypeVoidOverworld();
 			DimensionManager.unregisterDimension(-1);
 			DimensionManager.registerDimension(-1,
-					DimensionType.register("VoidNether", "_nether", -1, WorldProviderVoidNether.class, false));
+					DimensionType.register("VoidNether", "_nether", -1, WorldProviderVoidNether.class, true));
 		}
 		if (Config.voidOverworld == true) {
 			wtvn = new WorldTypeVoidNether();
 			DimensionManager.unregisterDimension(0);
 			DimensionManager.registerDimension(0,
-					DimensionType.register("VoidOverworld", "overworld", 0, WorldProviderVoidOverworld.class, false));
+					DimensionType.register("VoidOverworld", "overworld", 0, WorldProviderVoidOverworld.class, true));
 		}
 	}
 

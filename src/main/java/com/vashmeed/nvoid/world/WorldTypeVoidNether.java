@@ -1,7 +1,6 @@
 package com.vashmeed.nvoid.world;
 
 import com.vashmeed.nvoid.world.gen.ChunkGeneratorVoidNether;
-import com.vashmeed.nvoid.world.gen.ChunkGeneratorVoidOverworld;
 
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.world.World;

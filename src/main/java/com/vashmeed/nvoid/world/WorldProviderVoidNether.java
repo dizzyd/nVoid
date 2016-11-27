@@ -1,7 +1,7 @@
 package com.vashmeed.nvoid.world;
 
 import com.vashmeed.nvoid.world.biome.VoidBiomeProvider;
-import com.vashmeed.nvoid.world.gen.ChunkGeneratorVoidOverworld;
+import com.vashmeed.nvoid.world.gen.ChunkGeneratorVoidNether;
 
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.WorldProviderHell;
@@ -19,12 +19,12 @@ public class WorldProviderVoidNether extends WorldProviderHell {
 
 	@Override
 	public IChunkGenerator createChunkGenerator() {
-		return new ChunkGeneratorVoidOverworld(worldObj);
+		return new ChunkGeneratorVoidNether(worldObj);
 	}
 
 	@Override
 	public void createBiomeProvider() {
-			this.biomeProvider = new VoidBiomeProvider(worldObj);
+		this.biomeProvider = new VoidBiomeProvider(worldObj);
 	}
 
 	@Override
