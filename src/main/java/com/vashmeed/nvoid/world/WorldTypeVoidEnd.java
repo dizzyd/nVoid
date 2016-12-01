@@ -1,5 +1,6 @@
 package com.vashmeed.nvoid.world;
 
+import com.vashmeed.nvoid.world.gen.ChunkGeneratorVoidEnd;
 import com.vashmeed.nvoid.world.gen.ChunkGeneratorVoidNether;
 
 import net.minecraft.server.MinecraftServer;
@@ -8,15 +9,15 @@ import net.minecraft.world.WorldServer;
 import net.minecraft.world.WorldType;
 import net.minecraft.world.chunk.IChunkGenerator;
 
-public class WorldTypeVoidNether extends WorldType {
+public class WorldTypeVoidEnd extends WorldType {
 
-	public WorldTypeVoidNether() {
+	public WorldTypeVoidEnd() {
 		super("void");
 	}
 
 	@Override
 	public IChunkGenerator getChunkGenerator(World world, String generatorOptions) {
-		return new ChunkGeneratorVoidNether(world);
+		return new ChunkGeneratorVoidEnd(world);
 	}
 
 	@Override

@@ -2,13 +2,14 @@ package com.vashmeed.nvoid;
 
 import com.vashmeed.nvoid.config.Config;
 import com.vashmeed.nvoid.proxy.CommonProxy;
+import com.vashmeed.nvoid.world.WorldProviderVoidEnd;
 import com.vashmeed.nvoid.world.WorldProviderVoidNether;
 import com.vashmeed.nvoid.world.WorldProviderVoidOverworld;
+import com.vashmeed.nvoid.world.WorldTypeVoidEnd;
 import com.vashmeed.nvoid.world.WorldTypeVoidNether;
 import com.vashmeed.nvoid.world.WorldTypeVoidOverworld;
 
 import net.minecraft.world.DimensionType;
-import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
@@ -20,12 +21,12 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 /**
  * Created by Vaheed on 10/31/2016.
  */
-@Mod(modid = nVoid.modId, name = nVoid.name, version = nVoid.version, acceptedMinecraftVersions = "[1.9.4, 1.10.2]")
+@Mod(modid = nVoid.modId, name = nVoid.name, version = nVoid.version, acceptedMinecraftVersions = "[1.9.4, 1.10.2, 1.11]")
 public class nVoid {
 
 	public static final String modId = "nvoid";
 	public static final String name = "nVoid";
-	public static final String version = "0.3";
+	public static final String version = "1.0";
 
 	@SidedProxy(serverSide = "com.vashmeed.nvoid.proxy.CommonProxy", clientSide = "com.vashmeed.nvoid.proxy.ClientProxy")
 	public static CommonProxy proxy;
@@ -34,7 +35,7 @@ public class nVoid {
 	public static nVoid instance;
 	private WorldTypeVoidOverworld wtvo;
 	private WorldTypeVoidNether wtvn;
-	private Biome wb;
+	private WorldTypeVoidEnd wtve;
 
 	@Mod.EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
@@ -46,16 +47,22 @@ public class nVoid {
 	@Mod.EventHandler
 	public void load(FMLInitializationEvent event) {
 		if (Config.voidNether == true) {
-			wtvo = new WorldTypeVoidOverworld();
+			wtvn = new WorldTypeVoidNether();
 			DimensionManager.unregisterDimension(-1);
 			DimensionManager.registerDimension(-1,
 					DimensionType.register("VoidNether", "_nether", -1, WorldProviderVoidNether.class, false));
 		}
 		if (Config.voidOverworld == true) {
-			wtvn = new WorldTypeVoidNether();
+			wtvo = new WorldTypeVoidOverworld();
 			DimensionManager.unregisterDimension(0);
 			DimensionManager.registerDimension(0,
 					DimensionType.register("VoidOverworld", "overworld", 0, WorldProviderVoidOverworld.class, false));
+		}
+		if (Config.voidEnd == true) {
+			wtve = new WorldTypeVoidEnd();
+			DimensionManager.unregisterDimension(1);
+			DimensionManager.registerDimension(1,
+					DimensionType.register("VoidEnd", "end", 1, WorldProviderVoidEnd.class, false));
 		}
 	}
 

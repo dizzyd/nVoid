@@ -9,14 +9,11 @@ import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.chunk.ChunkPrimer;
 import net.minecraft.world.gen.ChunkProviderFlat;
 
-/**
- * Created by Vaheed on 10/31/2016.
- */
-public class ChunkGeneratorVoidNether extends ChunkProviderFlat {
+public class ChunkGeneratorVoidEnd extends ChunkProviderFlat{
 
 	private World w;
 
-	public ChunkGeneratorVoidNether(World w) {
+	public ChunkGeneratorVoidEnd(World w) {
 		super(w, w.getSeed(), false, null);
 		this.w = w;
 	}
@@ -33,7 +30,7 @@ public class ChunkGeneratorVoidNether extends ChunkProviderFlat {
 		byte[] ids = c.getBiomeArray();
 
 		for (int i = 0; i < ids.length; ++i) {
-			if (Config.voidBiomeNether)
+			if (Config.voidBiomeEnd)
 				ids[i] = (byte) Biome.getIdForBiome(Biomes.VOID);
 			else
 				ids[i] = (byte) Biome.getIdForBiome(abiome[i]);
@@ -42,5 +39,5 @@ public class ChunkGeneratorVoidNether extends ChunkProviderFlat {
 		c.generateSkylightMap();
 		return c;
 	}
-
+	
 }
