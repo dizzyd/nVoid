@@ -1,7 +1,5 @@
 package com.vashmeed.nvoid.world.gen;
 
-import javax.annotation.Nullable;
-
 import com.vashmeed.nvoid.config.Config;
 
 import net.minecraft.init.Biomes;
@@ -12,8 +10,6 @@ import net.minecraft.world.biome.Biome;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.chunk.ChunkPrimer;
 import net.minecraft.world.gen.ChunkProviderFlat;
-import net.minecraft.world.gen.structure.MapGenStronghold;
-import net.minecraft.world.gen.structure.MapGenStructure;
 
 public class ChunkGeneratorVoidOverworld extends ChunkProviderFlat {
 
@@ -28,7 +24,6 @@ public class ChunkGeneratorVoidOverworld extends ChunkProviderFlat {
 	public void populate(int x, int y) {
 		if (x == 0 && y == 0)
 			this.w.setBlockState(new BlockPos(0, Config.overworldSpawnHeight, 0), Blocks.DIRT.getDefaultState());
-
 	}
 
 	@Override

@@ -13,6 +13,7 @@ public class Config {
 	public static boolean voidBiomeNether;
 	public static boolean voidBiomeOverworld;
 	public static boolean voidBiomeEnd;
+	public static boolean endDragonEnabled;
 	public static int overworldSpawnHeight;
 
 	public static void loadConfig(FMLPreInitializationEvent event) {
@@ -31,11 +32,14 @@ public class Config {
 				"If enabled, the default 'hell' biome will be replaced by a void biome, resulting in no mobs spawning and other biome specific features.");
 		voidBiomeOverworld = config.getBoolean("Generate the overworld as a void biome", "beta", false,
 				"If enabled, natural biome generation options will be replaced by the void, preventing mobs from spawning and other biome specific features.");
+		
 		voidBiomeEnd = config.getBoolean("Generate the end as a void biome", "beta", false,
 				"If enabled, natural biome generation options will be replaced by the void, preventing mobs from spawning and other biome specific features.");
 
 		overworldSpawnHeight = config.getInt("Spawn Height", "gamma", 64, 0, 254,
 				"Changes the height at which you spawn at in the overworld and the end.");
+		endDragonEnabled = config.getBoolean("Spawn the end dragon", "gamma", false,
+				"If enabled, the end dragon will spawn as default when the end is void.");
 
 	}
 
