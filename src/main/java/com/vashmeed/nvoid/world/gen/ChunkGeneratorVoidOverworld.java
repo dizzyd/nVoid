@@ -23,7 +23,10 @@ public class ChunkGeneratorVoidOverworld extends ChunkProviderFlat {
 	@Override
 	public void populate(int x, int y) {
 		if (x == 0 && y == 0)
-			this.w.setBlockState(new BlockPos(0, Config.overworldSpawnHeight, 0), Blocks.DIRT.getDefaultState());
+			if (Config.firstBlockChest)
+				this.w.setBlockState(new BlockPos(0, Config.overworldSpawnHeight, 0), Blocks.CHEST.getDefaultState());
+			else
+				this.w.setBlockState(new BlockPos(0, Config.overworldSpawnHeight, 0), Blocks.DIRT.getDefaultState());
 	}
 
 	@Override
