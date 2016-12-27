@@ -1,7 +1,9 @@
 package com.vashmeed.nvoid.world;
 
 import com.vashmeed.nvoid.config.Config;
+import com.vashmeed.nvoid.world.end.DragonFightVoid;
 import com.vashmeed.nvoid.world.gen.ChunkGeneratorVoidEnd;
+import com.vashmeed.nvoid.world.gen.ChunkGeneratorVoidIsland;
 
 import net.minecraft.init.Biomes;
 import net.minecraft.nbt.NBTTagCompound;
@@ -15,7 +17,7 @@ import net.minecraft.world.end.DragonFightManager;
 
 public class WorldProviderVoidEnd extends WorldProviderEnd {
 
-	private DragonFightManager dragonFightManager;
+	private DragonFightVoid dragonFightManager;
 	
 	@Override
     public void createBiomeProvider()
@@ -24,13 +26,14 @@ public class WorldProviderVoidEnd extends WorldProviderEnd {
         this.hasNoSky = true;
         if (Config.endDragonEnabled) {
             NBTTagCompound nbttagcompound = this.worldObj.getWorldInfo().getDimensionData(DimensionType.THE_END);
-            this.dragonFightManager = this.worldObj instanceof WorldServer ? new DragonFightManager((WorldServer)this.worldObj, nbttagcompound.getCompoundTag("DragonFight")) : null;
+            this.dragonFightManager = this.worldObj instanceof WorldServer ? new DragonFightVoid((WorldServer)this.worldObj, nbttagcompound.getCompoundTag("DragonFight")) : null;
         }
     }
 	
 	@Override
 	public IChunkGenerator createChunkGenerator() {
-		return new ChunkGeneratorVoidEnd(worldObj);
+		return new ChunkGeneratorVoidIsland(worldObj, hasNoSky, 1);
+		// return new ChunkGeneratorVoidEnd(worldObj);
 	}
 
 	@Override

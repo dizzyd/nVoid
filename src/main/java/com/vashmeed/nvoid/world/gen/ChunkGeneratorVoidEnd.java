@@ -9,7 +9,7 @@ import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.chunk.ChunkPrimer;
 import net.minecraft.world.gen.ChunkProviderFlat;
 
-public class ChunkGeneratorVoidEnd extends ChunkProviderFlat{
+public class ChunkGeneratorVoidEnd extends ChunkProviderFlat {
 
 	private World w;
 
