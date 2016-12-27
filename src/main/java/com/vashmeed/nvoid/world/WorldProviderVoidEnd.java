@@ -32,8 +32,8 @@ public class WorldProviderVoidEnd extends WorldProviderEnd {
 	
 	@Override
 	public IChunkGenerator createChunkGenerator() {
-		return new ChunkGeneratorVoidIsland(worldObj, hasNoSky, 1);
-		// return new ChunkGeneratorVoidEnd(worldObj);
+		//return new ChunkGeneratorVoidIsland(worldObj, hasNoSky, 1);
+		return new ChunkGeneratorVoidEnd(worldObj);
 	}
 
 	@Override
