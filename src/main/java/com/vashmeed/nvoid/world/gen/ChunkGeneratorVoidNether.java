@@ -36,7 +36,9 @@ public class ChunkGeneratorVoidNether extends ChunkProviderFlat {
 			if (Config.voidBiomeNether)
 				ids[i] = (byte) Biome.getIdForBiome(Biomes.VOID);
 			else
-				ids[i] = (byte) Biome.getIdForBiome(abiome[i]);
+				//ids[i] = (byte) Biome.getIdForBiome(abiome[i]);
+				ids[i] = (byte) Biome.getIdForBiome(Biomes.HELL);
+
 		}
 
 		c.generateSkylightMap();
