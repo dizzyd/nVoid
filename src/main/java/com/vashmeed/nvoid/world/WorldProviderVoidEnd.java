@@ -3,7 +3,6 @@ package com.vashmeed.nvoid.world;
 import com.vashmeed.nvoid.config.Config;
 import com.vashmeed.nvoid.world.end.DragonFightVoid;
 import com.vashmeed.nvoid.world.gen.ChunkGeneratorVoidEnd;
-import com.vashmeed.nvoid.world.gen.ChunkGeneratorVoidIsland;
 
 import net.minecraft.init.Biomes;
 import net.minecraft.nbt.NBTTagCompound;
@@ -12,34 +11,32 @@ import net.minecraft.world.DimensionType;
 import net.minecraft.world.WorldProviderEnd;
 import net.minecraft.world.WorldServer;
 import net.minecraft.world.biome.BiomeProviderSingle;
-import net.minecraft.world.chunk.IChunkGenerator;
-import net.minecraft.world.end.DragonFightManager;
+import net.minecraft.world.gen.IChunkGenerator;
 
 public class WorldProviderVoidEnd extends WorldProviderEnd {
 
 	private DragonFightVoid dragonFightManager;
 	
 	@Override
-    public void createBiomeProvider()
+    public void init()
     {
         this.biomeProvider = new BiomeProviderSingle(Biomes.SKY);
-        this.hasNoSky = true;
         if (Config.endDragonEnabled) {
-            NBTTagCompound nbttagcompound = this.worldObj.getWorldInfo().getDimensionData(DimensionType.THE_END);
-            this.dragonFightManager = this.worldObj instanceof WorldServer ? new DragonFightVoid((WorldServer)this.worldObj, nbttagcompound.getCompoundTag("DragonFight")) : null;
+            NBTTagCompound nbttagcompound = this.world.getWorldInfo().getDimensionData(DimensionType.THE_END.getId());
+            this.dragonFightManager = this.world instanceof WorldServer ? new DragonFightVoid((WorldServer)this.world,
+					nbttagcompound.getCompoundTag("DragonFight")) : null;
         }
-    }
-	
+	}
+
 	@Override
 	public IChunkGenerator createChunkGenerator() {
-		//return new ChunkGeneratorVoidIsland(worldObj, hasNoSky, 1);
-		return new ChunkGeneratorVoidEnd(worldObj);
+		return new ChunkGeneratorVoidEnd(world);
 	}
 
 	@Override
 	public BlockPos getRandomizedSpawnPoint() {
-		BlockPos spawn = new BlockPos(worldObj.getSpawnPoint());
-		spawn = worldObj.getTopSolidOrLiquidBlock(spawn);
+		BlockPos spawn = new BlockPos(world.getSpawnPoint());
+		spawn = world.getTopSolidOrLiquidBlock(spawn);
 		return spawn;
 	}
 	

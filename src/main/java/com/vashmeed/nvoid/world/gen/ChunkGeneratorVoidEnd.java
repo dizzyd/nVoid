@@ -7,9 +7,9 @@ import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.chunk.ChunkPrimer;
-import net.minecraft.world.gen.ChunkProviderFlat;
+import net.minecraft.world.gen.ChunkGeneratorFlat;
 
-public class ChunkGeneratorVoidEnd extends ChunkProviderFlat {
+public class ChunkGeneratorVoidEnd extends ChunkGeneratorFlat {
 
 	private World w;
 
@@ -24,9 +24,9 @@ public class ChunkGeneratorVoidEnd extends ChunkProviderFlat {
 	}
 
 	@Override
-	public Chunk provideChunk(int x, int z) {
+	public Chunk generateChunk(int x, int z) {
 		Chunk c = new Chunk(w, new ChunkPrimer(), x, z);
-		Biome[] abiome = this.w.getBiomeProvider().loadBlockGeneratorData((Biome[]) null, x * 16, z * 16, 16, 16);
+		Biome[] abiome = this.w.getBiomeProvider().getBiomesForGeneration((Biome[]) null, x * 16, z * 16, 16, 16);
 		byte[] ids = c.getBiomeArray();
 
 		for (int i = 0; i < ids.length; ++i) {

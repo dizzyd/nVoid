@@ -21,12 +21,12 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 /**
  * Created by Vaheed on 10/31/2016.
  */
-@Mod(modid = nVoid.modId, name = nVoid.name, version = nVoid.version, acceptedMinecraftVersions = "[1.9.4, 1.10.2, 1.11]")
+@Mod(modid = nVoid.modId, name = nVoid.name, version = nVoid.version, acceptedMinecraftVersions = "[1.12]")
 public class nVoid {
 
 	public static final String modId = "nvoid";
 	public static final String name = "nVoid";
-	public static final String version = "1.0";
+	public static final String version = "1.1.0";
 
 	@SidedProxy(serverSide = "com.vashmeed.nvoid.proxy.CommonProxy", clientSide = "com.vashmeed.nvoid.proxy.ClientProxy")
 	public static CommonProxy proxy;

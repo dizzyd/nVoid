@@ -5,11 +5,9 @@ import com.vashmeed.nvoid.world.gen.ChunkGeneratorVoidNether;
 
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.WorldProviderHell;
-import net.minecraft.world.chunk.IChunkGenerator;
+import net.minecraft.world.gen.IChunkGenerator;
 
-/**
- * Created by Vaheed on 10/31/2016.
- */
+
 public class WorldProviderVoidNether extends WorldProviderHell {
 
 	@Override
@@ -19,18 +17,20 @@ public class WorldProviderVoidNether extends WorldProviderHell {
 
 	@Override
 	public IChunkGenerator createChunkGenerator() {
-		return new ChunkGeneratorVoidNether(worldObj);
+		return new ChunkGeneratorVoidNether(world);
 	}
 
 	@Override
-	public void createBiomeProvider() {
-		this.biomeProvider = new VoidBiomeProvider(worldObj);
+	public void init() {
+		this.biomeProvider = new VoidBiomeProvider(world);
+		this.doesWaterVaporize = true;
+		this.nether = true;
 	}
 
 	@Override
 	public BlockPos getRandomizedSpawnPoint() {
-		BlockPos spawn = new BlockPos(worldObj.getSpawnPoint());
-		spawn = worldObj.getTopSolidOrLiquidBlock(spawn);
+		BlockPos spawn = new BlockPos(world.getSpawnPoint());
+		spawn = world.getTopSolidOrLiquidBlock(spawn);
 		return spawn;
 	}
 }

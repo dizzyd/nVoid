@@ -5,11 +5,8 @@ import com.vashmeed.nvoid.world.gen.ChunkGeneratorVoidOverworld;
 
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.WorldProviderSurface;
-import net.minecraft.world.chunk.IChunkGenerator;
+import net.minecraft.world.gen.IChunkGenerator;
 
-/**
- * Created by Vaheed on 11/1/2016.
- */
 public class WorldProviderVoidOverworld extends WorldProviderSurface {
 
 	@Override
@@ -19,18 +16,18 @@ public class WorldProviderVoidOverworld extends WorldProviderSurface {
 
 	@Override
 	public IChunkGenerator createChunkGenerator() {
-		return new ChunkGeneratorVoidOverworld(worldObj);
+		return new ChunkGeneratorVoidOverworld(world);
 	}
 
 	@Override
-	protected void createBiomeProvider() {
-		this.biomeProvider = new VoidBiomeProvider(worldObj);
+	protected void init() {
+		this.biomeProvider = new VoidBiomeProvider(world);
 	}
 
 	@Override
 	public BlockPos getRandomizedSpawnPoint() {
-		BlockPos spawn = new BlockPos(worldObj.getSpawnPoint());
-		spawn = worldObj.getTopSolidOrLiquidBlock(spawn);
+		BlockPos spawn = new BlockPos(world.getSpawnPoint());
+		spawn = world.getTopSolidOrLiquidBlock(spawn);
 		return spawn;
 	}
 
