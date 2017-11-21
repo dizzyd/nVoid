@@ -1,6 +1,7 @@
 package com.vashmeed.nvoid.world;
 
 import com.vashmeed.nvoid.config.Config;
+import com.vashmeed.nvoid.world.biome.VoidBiomeProvider;
 import com.vashmeed.nvoid.world.end.DragonFightVoid;
 import com.vashmeed.nvoid.world.gen.ChunkGeneratorVoidEnd;
 
@@ -20,7 +21,12 @@ public class WorldProviderVoidEnd extends WorldProviderEnd {
 	@Override
     public void init()
     {
-        this.biomeProvider = new BiomeProviderSingle(Biomes.SKY);
+    	if (Config.voidBiomeEnd) {
+    		this.biomeProvider = new BiomeProviderSingle(Biomes.SKY);
+		} else {
+			this.biomeProvider = new VoidBiomeProvider(world);
+		}
+
         if (Config.endDragonEnabled) {
             NBTTagCompound nbttagcompound = this.world.getWorldInfo().getDimensionData(DimensionType.THE_END.getId());
             this.dragonFightManager = this.world instanceof WorldServer ? new DragonFightVoid((WorldServer)this.world,
